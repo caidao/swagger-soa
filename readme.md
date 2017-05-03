@@ -6,4 +6,20 @@ Swagger 是一个规范和完整的框架，用于生成、描述、调用和可
 
 
 
+### 原理
 
++ handlerMappings不再由spring mvc提供，通过SwaggerBeanDefinitionRegistryPostProcessor来扫描类和注解信息，并将接口信息与URL关联起来；
++ 通过注解类EnableSwagger3，启动swagger框架；
++ DocumentationSoaPluginsBootstrapper监听spring容器的启动，结合spring的特性进行接口类扫描
++ 文档元数据信息都存放在DocumentationCache中
++ Swagger3ServiceImpl提供接口用于解析DocumentationCache，以便获取对应格式的数据，本次提供了两种格式：swagger原生支持的格式 和公司pizza系统所支持的格式
+
+
+### 优点
++  可以定制化扫描接口文档
++ 其他优点参考swagger的优点
+
+
+### 缺点
++  swagger需要学习成本
++  有代码侵入
